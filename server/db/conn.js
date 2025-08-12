@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const DB = process.env.Database
+const DB = process.env.DATABASE
 
 mongoose.set("strictQuery", false);
 
