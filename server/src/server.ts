@@ -1,5 +1,4 @@
 import express from "express";
-import dotenv from "dotenv";
 import cors from "cors";
 
 const app = express()
@@ -11,8 +10,6 @@ app.use(cookieParser())
 app.use(cors({
   origin: 'http://localhost:5173',  // TODO .env
 }));
-
-dotenv.config({path:'./config.env'})
 
 app.use(express.json())
 

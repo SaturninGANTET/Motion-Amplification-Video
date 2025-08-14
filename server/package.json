@@ -10,24 +10,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
     "lowdb": "^7.0.1",
-    "mongoose": "^6.9.0",
-    "multer": "^2.0.2",
-    "nodemon": "^3.1.10"
+    "multer": "^2.0.2"
   },
   "devDependencies": {
-    "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
-    "@types/jsonwebtoken": "^9.0.10",
     "@types/lowdb": "^1.0.15",
-    "@types/mongoose": "^5.11.96",
     "@types/multer": "^2.0.0",
     "@types/node": "^24.2.1",
     "ts-node": "^10.9.2",
