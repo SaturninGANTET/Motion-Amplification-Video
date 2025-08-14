@@ -14,8 +14,6 @@ app.use(cors({
 
 dotenv.config({path:'./config.env'})
 
-require('./db/conn')
-
 app.use(express.json())
 
 app.use(require('./router/video'))
