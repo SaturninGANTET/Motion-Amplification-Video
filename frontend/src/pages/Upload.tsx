@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useCallback, useState } from 'react';
+import { useNavigate} from 'react-router-dom';
 import Dropzone from '../components/Dropzone';
 import VideoPreview from '../components/VideoPreview';
 import DisplayVideo from '../components/DisplayVideo';
@@ -10,7 +10,7 @@ function Upload() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
-  const [videoPreviewKey, setVideoPreviewKey] = useState(0);
+  const [videoPreviewKey] = useState(0);
 
   // Handles video file drop and validation
   const onDrop = useCallback(async (acceptedFiles: any) => {

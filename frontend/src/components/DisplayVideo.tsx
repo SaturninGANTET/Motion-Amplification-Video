@@ -1,5 +1,3 @@
-import React from 'react';
-
 const DisplayVideo = ({ selectedVideo }:any) => {
   let videoUrl: string | undefined = undefined;
   videoUrl = `/api/videos/${selectedVideo?.filename}`

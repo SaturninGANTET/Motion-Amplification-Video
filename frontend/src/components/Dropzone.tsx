@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useDropzone, type Accept } from 'react-dropzone';
 
 const Dropzone = ({ onDrop, loading }: any) => {

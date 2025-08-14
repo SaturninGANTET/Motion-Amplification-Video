@@ -1,5 +1,3 @@
-import React from 'react';
-
 const OpPara = ({ parameters }:any) => {
   var result = Object.keys(parameters).map((key) => [key, parameters[key]]);
 

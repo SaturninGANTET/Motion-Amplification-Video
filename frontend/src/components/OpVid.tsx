@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const OpVid = ({ videoPath }:any) => {
   const [selectedFile, setSelectedFile] = useState(videoPath);

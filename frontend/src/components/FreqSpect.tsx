@@ -1,5 +1,3 @@
-import React from 'react';
-
 const FreqSpect = () => {
   return (
     <div className="bg-light rounded-lg font-sans p-4 shadow-md">

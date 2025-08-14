@@ -37,16 +37,6 @@ const InputPage = () => {
     Temporal: Boolean,
   });
 
-  // Handle changes in input fields and update the state
-  const handleInputChange = (e:any) => {
-    const { name, value, type, checked } = e.target;
-    const newValue = type === 'checkbox' ? checked : value;
-
-    setInputParameters({
-      ...inputParameters,
-      [name]: newValue,
-    });
-  };
 
   // Handle the JSON creation and logging
   const handleJSONCreation = () => {

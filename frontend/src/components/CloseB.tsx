@@ -1,6 +1,4 @@
 // components/CloseButton.jsx
-import React from 'react';
-
 const CloseB = ({ onClick } : any) => {
   return (
     <button onClick={onClick} className="text-white">

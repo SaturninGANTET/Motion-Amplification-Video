@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const ImportData = () => {
   const [filePath, setFilePath] = useState('');

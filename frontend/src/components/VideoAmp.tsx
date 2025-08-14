@@ -1,5 +1,5 @@
 // components/VideoAmp.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const VideoAmp = () => {
   const [frequencyInputVisible, setFrequencyInputVisible] = useState(false);
