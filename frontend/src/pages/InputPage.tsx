@@ -97,9 +97,6 @@ const InputPage = () => {
         </button>
       </div>
       <div className="rounded-lg ml-20 mr-20 flex-grow overflow-y-auto">
-        <ImportData />
-        <VideoAmp />
-        <FreqSpect />
         <UserInput onSubmit={handleFormSubmit}/> {/* Pass the onSubmit prop */}
       </div>
       {/* Button to create and log JSON */}

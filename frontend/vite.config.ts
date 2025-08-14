@@ -7,6 +7,7 @@ export default defineConfig({
     postcss: './postcss.config.cjs',  // Ensure PostCSS config is recognized by Vite
   },
   server: {
+    port: 5173,
     proxy: {
       '/api': {
         target: 'http://localhost:3001',  // Target the backend running on localhost:3001
