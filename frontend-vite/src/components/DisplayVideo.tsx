@@ -1,7 +1,8 @@
 import React from 'react';
 
 const DisplayVideo = ({ selectedVideo }:any) => {
-  const videoUrl = selectedVideo ? URL.createObjectURL(selectedVideo) : undefined;
+  let videoUrl: string | undefined = undefined;
+  videoUrl = `/api/videos/${selectedVideo?.filename}`
   return (
     <div className="p-4 bg-gray-200 h-5/6 flex items-center justify-center">
       {selectedVideo ? (

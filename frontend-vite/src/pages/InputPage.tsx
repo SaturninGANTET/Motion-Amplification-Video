@@ -52,15 +52,13 @@ const InputPage = () => {
   const handleJSONCreation = () => {
     // Combine selected video with input parameters
     const inputData = {
-      selectedVideo: selectedVideo,
       inputParameters: inputParameters,
     };
 
     // Log the JSON object
     console.log( inputData);
     setLoading(true)
-
-    fetch('http://localhost:8080/upload/', {
+    fetch(`/api/videos/${selectedVideo.filename}/process`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

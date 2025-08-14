@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {useNavigate} from 'react-router-dom'
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const navigate = useNavigate()
   // Handle window resize
   const handleResize = () => {
     if (window.innerWidth >= 640) {
@@ -22,25 +20,6 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-
-  const logout=async()=>{
-    dispatch({ type: 'LOGOUT' });
-    const res = await fetch('/api/logout',{
-      method:'GET',
-      headers:{
-        Accept:'application/json',
-        'Content-Type':'application/json'
-      ,
-    credentials:'include'}
-    });
-
-    const data = await res.json();
-    if(res.status === 200){
-      console.log("cookie clear")
-    }
-    localStorage.removeItem('email');
-  navigate('/login');
-  }
 
   return (
     <div>

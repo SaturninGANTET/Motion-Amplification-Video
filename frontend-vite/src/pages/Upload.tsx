@@ -9,7 +9,7 @@ import axios from 'axios';
 function Upload() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const [selectedVideo, setSelectedVideo] = useState<File | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const [videoPreviewKey, setVideoPreviewKey] = useState(0);
 
   // Handles video file drop and validation
@@ -20,41 +20,45 @@ function Upload() {
 
     if (acceptedVideos.length > 0) {
       const videoFile = acceptedVideos[0];
-      setSelectedVideo(videoFile); // Set the selected video
+      const videoPath = await uploadVideo(videoFile);
+      setSelectedVideo(videoPath); // Set the selected video
     }
   }, []);
 
-  // Upload video to the server
-  const handleUpload = async () => {
-    if (selectedVideo) {
-      setLoading(true);
+  const uploadVideo = async (video: File) => {
+    setLoading(true);
+    const formData = new FormData();
+    formData.append('video', video);
+    try {
+      const response = await axios.post('/api/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
 
-      // Create FormData object to send video file
-      const formData = new FormData();
-      formData.append('video', selectedVideo);
-      try {
-        const response = await axios.post('/api/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`, // Add token if needed
-          },
-        });
-
-        // Assuming server response contains video URL or metadata
-        if (response.data) {
-          console.log('Video uploaded successfully:', response.data);
-          navigate('/input', {
-            state: {
-              selectedVideo: selectedVideo,
-            },
-          });
-        }
-      } catch (error) {
-        console.error('Upload Error:', error);
-        alert('There was an error uploading the video.');
-      } finally {
-        setLoading(false);
+      // Assuming server response contains video URL or metadata
+      if (response.data) {
+        console.log('Video uploaded successfully:', response.data);
+        return response?.data?.videoMetadata as string;
       }
+      return null;
+    } catch (error) {
+      console.error('Upload Error:', error);
+      alert('There was an error uploading the video.');
+      return null;
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  // Upload video to the server
+  const goToInput = async () => {
+    if (selectedVideo) {
+      navigate('/input', {
+        state: {
+          selectedVideo: selectedVideo,
+        },
+      });
     }
   };
 
@@ -72,10 +76,10 @@ function Upload() {
           {selectedVideo && (
             <button
               className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mt-4 block"
-              onClick={handleUpload}
+              onClick={goToInput}
               disabled={loading}
             >
-              {loading ? 'Uploading...' : 'Upload and Go to Input'}
+              {loading ? 'Uploading...' : 'Go to Input'}
             </button>
           )}
         </div>
