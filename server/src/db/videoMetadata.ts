@@ -1,5 +1,6 @@
 import { Low } from 'lowdb';
 import {JSONFile} from 'lowdb/node'
+import path from 'path';
 
 export interface VideoMetadata {
   filename: string;
@@ -9,7 +10,7 @@ export interface VideoMetadata {
   uploadedAt: Date;
 }
 
-const adapter = new JSONFile<VideoMetadata[]>('db.json');
+const adapter = new JSONFile<VideoMetadata[]>(path.join(__dirname, "..", "db.json"));
 
 const db = new Low(adapter, []);
 
